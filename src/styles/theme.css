@@ -1,0 +1,185 @@
+/*
+  Hanki Restaurant — Design System
+  
+  Brand story: The word "hanki" bridges two cultures.
+  In Korean: one meal, one experience.
+  In Finnish: the moment spring sun warms the snow — warmth 
+  breaking through cold, the end of a long winter in Lapland.
+
+  Palette philosophy:
+    Deep void backgrounds  → the long Lappish winter dark
+    Warm gold & gochujang  → the heat, the food, the welcome
+    Snow whites & frost    → the landscape, the clean air
+    Pine green accent      → the forest just outside the city
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono&display=swap');
+
+:root {
+  /* --- Core Palette --- */
+  --color-void:     #0b0b0d;   /* deep Lappish night — main bg */
+  --color-surface:  #141418;   /* card / panel background */
+  --color-border:   #2a2a32;   /* subtle dividers */
+
+  /* Warmth — the hanki sun on snow */
+  --color-gold:     #d4954a;   /* warm amber — primary accent */
+  --color-gold-dim: #9a6a30;   /* subdued gold for hover states */
+
+  /* Heat — Korean red (gochujang) */
+  --color-red:      #c23b3b;   /* CTA, tags, highlights */
+  --color-red-soft: #8a2a2a;   /* hover/pressed */
+
+  /* Snow & frost — the Lappish landscape */
+  --color-snow:     #f0ebe2;   /* primary text — warm off-white */
+  --color-frost:    #9ba5b4;   /* muted text, captions */
+  --color-ice:      #d4dce8;   /* secondary text */
+
+  /* Pine — Northern forest */
+  --color-pine:     #2e5e44;   /* vegan tags, nature accents */
+  --color-pine-light: #4a8f65; /* pine hover */
+
+  /* --- Typography --- */
+  --font-serif:  'Noto Serif KR', 'Georgia', serif;   /* headings — Korean + warmth */
+  --font-sans:   'Space Grotesk', 'Helvetica Neue', sans-serif; /* body — clean, modern */
+  --font-mono:   'Space Mono', monospace;             /* labels, prices, hours */
+
+  /* --- Type Scale --- */
+  --text-xs:   0.75rem;
+  --text-sm:   0.875rem;
+  --text-base: 1rem;
+  --text-lg:   1.125rem;
+  --text-xl:   1.375rem;
+  --text-2xl:  1.75rem;
+  --text-3xl:  2.25rem;
+  --text-4xl:  3rem;
+  --text-5xl:  4rem;
+
+  /* --- Spacing --- */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+
+  /* --- Layout --- */
+  --max-width:        1200px;
+  --content-padding:  clamp(1.5rem, 5vw, 4rem);
+
+  /* --- Radii --- */
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+
+  /* --- Shadows --- */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.5);
+  --shadow-warm: 0 4px 24px rgba(212, 149, 74, 0.15);  /* gold glow */
+  --shadow-red:  0 4px 24px rgba(194, 59, 59, 0.2);    /* red glow */
+
+  /* --- Transitions --- */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast:   150ms;
+  --duration-normal: 300ms;
+  --duration-slow:   600ms;
+}
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-snow);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--color-snow);
+}
+
+h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: var(--text-sm);
+  color: var(--color-frost);
+}
+
+p {
+  color: var(--color-ice);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--color-gold);
+  text-decoration: none;
+  transition: color var(--duration-fast) var(--ease-smooth);
+}
+
+a:hover {
+  color: var(--color-snow);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* --- Utility classes --- */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+.text-gold  { color: var(--color-gold); }
+.text-red   { color: var(--color-red); }
+.text-frost { color: var(--color-frost); }
+.text-mono  { font-family: var(--font-mono); }
+
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid currentColor;
+}
+
+.tag--vegan { color: var(--color-pine-light); }
+.tag--spicy { color: var(--color-red); }
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
